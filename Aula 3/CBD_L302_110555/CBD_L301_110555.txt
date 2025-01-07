@@ -1,0 +1,34 @@
+create table users(
+    id UUID primary key ,
+    nome text,
+    idade INT,
+    email text,
+);
+
+insert into users(id, nome, idade, email) values (uuid(), 'Maria', 30, 'maria@ua.pt');
+insert into users(id, nome, idade, email) values (uuid(), 'Jose', 31, 'jose@ua.pt');
+
+select * from users;
+
+update users set idade = 31 where id = 586b2fee-e53e-413e-9c57-16b344c54e15;
+
+delete from users where id = 586b2fee-e53e-413e-9c57-16b344c54e15;
+
+drop table users;
+
+create table produtos(
+    id uuid primary key ,
+    nome text,
+    categorias FROZEN<list<text>>,  -- lista de categorias
+    tags frozen<set<text>>, -- conjunto de tags
+    especificacoes map<text, text>, -- mapa chave-valor para um conjunto de especificaoes
+    dimensoes frozen<tuple<int, int, int>> -- tuplo de 3 inteiros para dizer dimensoes
+);
+
+insert into produtos(id, nome, categorias, tags, especificacoes, dimensoes)
+VALUES (uuid(), 'cadeira', ['escritorio', 'sala'], {'vermelha', 'azul'}, {'material': 'plastico'}, (100, 50,60));
+
+INSERT INTO produtos (id, nome, categorias, tags, especificacoes, dimensoes)
+VALUES (uuid(), 'Mesa', ['escritorio', 'madeira'], {'robustez'},
+        {'cor': 'castanho', 'material': 'madeira'}, (120, 80, 75))
+USING TTL 86400;

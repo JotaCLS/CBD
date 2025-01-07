@@ -1,0 +1,185 @@
+//Nmec: 110555
+
+#1-Encontre todos os atores que dirigiram um filme em que também atuaram e apresente o nome do ator e o título do filme.
+
+MATCH(p:Person)-[:DIRECTED]->(m:Movie)<-[:ACTED_IN]-(p)
+return p.name, m.title;
+
+
+#2-Para cada filme realizado depois de 2005, apresente os nomes de todos os atores que atuaram nesse filme.
+
+MATCH(p:Person)-[:ACTED_IN]->(m) where m.released >2005
+return p.name, m.title;
+
+
+#3-Encontre pares de nós com mais do que uma relação entre si.
+
+match (n)-[relacao1]->(m)<-[relacao2]-(n) 
+return n.name,relacao1, relacao2, m.title;
+
+// retorna padrões duplicados por exemplo
+// "Lilly Wachowski"│[:WROTE]│[:DIRECTED]│"Speed Racer"  
+// "Lilly Wachowski"│[:DIRECTED]│[:WROTE]│"Speed Racer" 
+
+match (n)-[relacao1]->(m)<-[relacao2]-(n) 
+where id(relacao1)>id(relacao2)
+return n.name,relacao1, relacao2, m.title;
+
+//problema resolvido com o where id(relacao1)>id(relacao2)
+// faz com que so se verifique os pares uma vez
+
+
+#4-Encontre todos os pares de pessoas que fizeram revisões do mesmo filme. Apresente os seus nomes e título de cada filme.  
+
+match (n1)-[:REVIEWED]->(m)<-[:REVIEWED]-(n2) where id(n1)>id(n2) return n1.name,n2.name, m.title;
+
+// where id(n1)>id(n2) resolve o problema de repetição de pares cujo a ordem é invertida
+
+
+#5-Encontre todos os pares de atores que atuaram em vários filmes juntos.
+
+match (n1)-[:ACTED_IN]->(m)<-[:ACTED_IN]-(n2) 
+where id(n1)>id(n2) // não repetir 
+with n1,n2, count(m) as numFilms // conta o numero de filmes que o par n1,n2 apareceu juntos
+where numFilms>1
+return n1.name,n2.name,numFilms; 
+
+
+#6-Determine a idade média do elenco do filme "Apollo 13" no ano do lançamento do filme. 
+ 
+MATCH (n)-[:ACTED_IN]->(m {title: "Apollo 13"}) 
+with m.released - n.born as age
+return AVG(age) as idadeMedia;
+
+#7-Encontre os 10 filmes com o elenco mais velho no momento do lançamento do filme. Apresente o filme e a idade média arredondada a 2 casas decimais, por ordem decrescente. 
+
+
+match (n)-[:ACTED_IN]->(m)
+with m, m.released-n.born as idade
+with m, round(avg(idade),2) as idade_media
+order by idade_media Desc
+limit 10
+return m.title, idade_media;
+
+
+#8-Apresente o subgrafo ACTED_IN do filme com o elenco mais novo, no momento do lançamento do filme. 
+
+match (p1:Person)-[rel:ACTED_IN]->(m1:Movie)
+with p1,m1, m1.released-p1.born as idade
+with m1, p1, avg(idade) as idadeMed
+order by idadeMed ASC
+limit 1
+match (p2:Person)-[rel:ACTED_IN]->(m1:Movie)
+return p2,m1, idadeMed;
+
+
+#9-Qual é o caminho mais curto (usando qualquer tipo de relação) entre John Cusack e Demi Moore?
+
+match sp=shortestPath((p1:Person {name:"John Cusack"})-[*]-(p2:Person {name:"Demi Moore"}))
+return sp;
+
+
+#10-Qual a dimensão caminho mais curto (usando qualquer tipo de relação) entre Keanu Reeves e Tom Cruise? 
+
+match sp=shortestPath((p1:Person {name:"Keanu Reeves"})-[*]-(p2:Person {name:"Tom Cruise"}))
+with length(sp) as dim
+return dim;
+
+
+#11-Quais são as dimensões do caminho mais curto entre pessoas com nome Jim e pessoas com nome Kevin?
+
+match sp=shortestPath((p1:Person)-[*]-(p2:Person))
+where p1.name contains "Jim" and p2.name contains "Kevin"
+with p1, p2, length(sp) as dim
+return p1.name, p2.name, dim
+
+
+#12-Que pessoas têm uma distância 2 para Jim Cash (a distância entre duas pessoas é o comprimento do caminho mais curto entre eles)? R: Sim 
+
+match sp=shortestpath((p1:Person{name: "Jim Cash"})-[*1..2]-(p2:Person))
+where p1<>p2 // diferentes
+with p1, p2, length(sp) as dim
+where dim = 2 // condição do enunciado
+return p1.name, p2.name, dim
+
+
+#13- Qual é a maior distância de uma pessoa para Kevin Bacon? R: Como não ha comando para longestPath faz-se o shortestPath, ordena-se inversamente e so se utiliza o primeiro
+						
+match sp=shortestpath((p1:Person {name: "Kevin Bacon"})-[*]-(p2:Person))
+where p1 <> p2
+with p1, p2, length(sp) as dim
+order by dim DESC
+LIMIT 1
+return p1, p2, dim
+
+
+#14-Qual é a maior distância entre duas pessoas?
+
+match sp=shortestPath((p1:Person)-[*]-(p2:Person))
+where p1<>p2
+with p1,p2,length(sp) as dim
+order by dim DESC
+LIMIT 1
+return p1,p2,dim
+
+#15-Qual é a distribuição de distâncias em pares (isto é, para a distância 1, 2, 3, ..., quantos pares de pessoas têm essa distância um do outro)? 
+
+match sp=shortestPath((p1:Person)-[*]-(p2:Person))
+where p1<>p2
+with p1,p2,length(sp) as dim
+return dim, count(*) as quantidade_pares
+order by dim ASC
+
+
+#16-Indique as 10 pessoas com menor distância média em que o caminho entre elas são relações do tipo ACTED_IN. R: Nao percebi bem a pergunta
+
+match sp=shortestPath((p1:Person)-[rel:ACTED_IN*]-(p2:Person))
+where p1<>p2
+with p1,p2, avg(length(sp)) as dim_media
+return p1,p2, dim_media
+order by dim_media ASC
+limit 10
+
+
+#17-Apresente os atores que tiveram pelo menos uma role para personagens com o prefixo 'Dr.'. O resultado deve ser uma lista com o par “Ator, Lista das roles”
+R: Ver as propriedades da relação em que esta presente a role que o ator fez
+
+match (p1:Person)-[rel:ACTED_IN]->(m1:Movie)
+where ANY(role in rel.roles where role starts with "Dr.")
+return p1.name, rel.roles
+
+
+#18-Todas as pessoas que atuaram em mais que 1 filme no espaço de 10 anos
+
+match (m1:Movie)<-[:ACTED_IN]-(p1:Person)-[:ACTED_IN]->(m2:Movie)
+where m1 <> m2 and abs(m1.released-m2.released) <= 10
+with p1, m1, m2, abs(m1.released-m2.released) as dif
+return p1.name, m1.title, m1.released, m2.title, m2.released, dif
+
+
+#19- Todas as pessoas com alguma relação a um filme que eram menores de idade na altura em que o filme foi lancado
+
+match (p1:Person)-[*]->(m1:Movie)
+where m1.released-p1.born <18
+with m1, p1, m1.released-p1.born as age
+return p1.name, m1.title, age
+
+
+#20- Quais são os 5 filmes com mais pessoas envolvidas na sua producao (maior quantidade de relações)
+
+match (p1:Person)-[r]->(m1:Movie)
+where type(r) in ["ACTED_IN", "PRODUCED", "DIRECTED"]
+with m1, COUNT(DISTINCT p1) as totalPessoas // para não ter pessoas repetidas que por exemplo atuaram e escreveram
+return m1.title, totalPessoas
+order by totalPessoas DESC
+LIMIT 5
+
+
+
+
+
+
+
+
+
+               

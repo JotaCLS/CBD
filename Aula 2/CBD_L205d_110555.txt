@@ -1,0 +1,16 @@
+function findCapicuas() {
+  // Buscar todos os números de telefone
+  var cursor = db.phones.find();
+
+  // Verificar cada número se é capicua
+  cursor.forEach(function(doc) {
+    var number = doc.components.number.toString();
+    var reversedNumber = number.split("").reverse().join("");
+
+    // Verifica se o número é igual ao seu reverso
+    if (number === reversedNumber) {
+      print("Capicua encontrada: " + doc.display);
+    }
+  });
+  print("Busca por capicuas concluída!");
+}

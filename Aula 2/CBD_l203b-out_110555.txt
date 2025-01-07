@@ -1,0 +1,177 @@
+// MAX QUANTIDADE = 3
+// INTERVALO = 120
+
+//Exemplo simples 1 de quantidade de cada produto
+
+Username: 
+Pedro
+
+Bem vindo Pedro
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+Produto:
+Queijo
+Quantidade:
+1
+
+Bem vindo Pedro
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+Produto:
+Pao
+Quantidade:
+1
+
+Bem vindo Pedro
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+Produto:
+Agua
+Quantidade:
+1
+
+Bem vindo Pedro
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+Produto:
+Cafe
+Quantidade:
+1
+
+Limite de quantidade de produtos atingido, quantidade possivel: 0 produtos
+
+
+Bem vindo Pedro
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+2
+{"nome": "Queijo", "quantidade": 1}
+{"nome": "Pao", "quantidade": 1}
+{"nome": "Agua", "quantidade": 1}
+
+Bem vindo Pedro
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+3
+
+------------------//--------------------
+
+// Exemplo em que quantidade possível é 1 e o user faz um pedido com quantidade 2 
+
+Username: 
+Tiago
+
+Bem vindo Tiago
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+Produto:
+Pao
+Quantidade:
+4
+
+Limite de quantidade de produtos atingido, quantidade possivel: 3 produtos
+
+
+Bem vindo Tiago
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+Produto:
+Pao
+Quantidade:
+2
+
+Bem vindo Tiago
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+Produto:
+Agua
+Quantidade:
+2
+
+Limite de quantidade de produtos atingido, quantidade possivel: 1 produtos
+
+
+Bem vindo Tiago
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+Produto:
+Agua
+Quantidade:
+1
+
+Bem vindo Tiago
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+2
+{"nome": "Pao", "quantidade": 2}
+{"nome": "Agua", "quantidade": 1}
+
+Bem vindo Tiago
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+Produto:
+Queijo
+Quantidade:
+1
+
+Limite de quantidade de produtos atingido, quantidade possivel: 0 produtos
+
+
+Bem vindo Tiago
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+Produto:
+Queijo
+Quantidade:
+0
+Quantidade inválida
+Produto:
+Queijo
+Quantidade:
+1
+
+Limite de quantidade de produtos atingido, quantidade possivel: 0 produtos
+
+
+Bem vindo Tiago
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+3

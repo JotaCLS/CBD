@@ -1,0 +1,47 @@
+[
+  {
+    "[json]": "{\"video_id\": 105, \"rating\": 3}"
+  },
+  {
+    "[json]": "{\"video_id\": 105, \"rating\": 4}"
+  },
+  {
+    "[json]": "{\"video_id\": 105, \"rating\": 5}"
+  },
+  {
+    "[json]": "{\"video_id\": 107, \"rating\": 4}"
+  },
+  {
+    "[json]": "{\"video_id\": 108, \"rating\": 5}"
+  },
+  {
+    "[json]": "{\"video_id\": 109, \"rating\": 3}"
+  },
+  {
+    "[json]": "{\"video_id\": 104, \"rating\": 2}"
+  },
+  {
+    "[json]": "{\"video_id\": 102, \"rating\": 3}"
+  },
+  {
+    "[json]": "{\"video_id\": 106, \"rating\": 3}"
+  },
+  {
+    "[json]": "{\"video_id\": 101, \"rating\": 2}"
+  },
+  {
+    "[json]": "{\"video_id\": 101, \"rating\": 4}"
+  },
+  {
+    "[json]": "{\"video_id\": 101, \"rating\": 5}"
+  },
+  {
+    "[json]": "{\"video_id\": 103, \"rating\": 1}"
+  },
+  {
+    "[json]": "{\"video_id\": 103, \"rating\": 4}"
+  },
+  {
+    "[json]": "{\"video_id\": 103, \"rating\": 5}"
+  }
+]

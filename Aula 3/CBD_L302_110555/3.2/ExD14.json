@@ -1,0 +1,32 @@
+[
+  {
+    "username": "104",
+    "like_timestamp": "2024-01-25 14:30:00.000",
+    "video_id": 103
+  },
+  {
+    "username": "103",
+    "like_timestamp": "2024-01-25 14:30:00.000",
+    "video_id": 101
+  },
+  {
+    "username": "106",
+    "like_timestamp": "2024-01-25 14:30:00.000",
+    "video_id": 103
+  },
+  {
+    "username": "102",
+    "like_timestamp": "2024-01-25 14:30:00.000",
+    "video_id": 102
+  },
+  {
+    "username": "105",
+    "like_timestamp": "2024-01-25 14:30:00.000",
+    "video_id": 101
+  },
+  {
+    "username": "101",
+    "like_timestamp": "2024-01-25 14:30:00.000",
+    "video_id": 101
+  }
+]

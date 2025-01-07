@@ -1,0 +1,84 @@
+CREATE KEYSPACE IF NOT EXISTS Partilha_de_videos WITH REPLICATION ={'class': 'SimpleStrategy', 'replication_factor' : '1'};
+
+USE Partilha_de_videos;
+// users sao unicos por isso cada user terá uma particao
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    username TEXT PRIMARY KEY,
+    nome TEXT,
+    email TEXT,
+    registration_timestamp TIMESTAMP
+);
+
+
+// como eu quero fazer pesquisa de videos por utilizador esta tabela torna a pesquisa mais eficiente
+// os videos sau guardados no cluster do author, sendo assim mais eficiente a pesquisa dos videos que X pessoa deu upload
+// troquei a ordem das keys para ter o timestamp para o exercício 5
+DROP TABLE IF EXISTS videos_by_user;
+CREATE TABLE videos_by_user (
+    author TEXT,
+    video_id int,
+    nome_video TEXT,
+    descricao TEXT,
+    tags SET<TEXT>,
+    upload_timestamp TIMESTAMP,
+    PRIMARY KEY ( author, upload_timestamp, video_id )
+) WITH CLUSTERING ORDER BY (upload_timestamp DESC);
+
+// comentarios sao armazenados no cluster dos videos por ordem do mais recente para o menos recente
+// todos os comentarios do mesmo video sao guardados juntos ordenados pelo timestamp
+DROP TABLE IF EXISTS comments;
+CREATE TABLE comments (
+    video_id int,
+    comment_timestamp TIMESTAMP,
+    author TEXT,
+    comentario TEXT,
+    PRIMARY KEY (video_id, comment_timestamp)
+) WITH CLUSTERING ORDER BY (comment_timestamp DESC);
+
+// comentarios sao armazenados no cluster dos utilizadores por ordem do mais recente para o menos recente
+// todos os comentarios do mesmo utilizador sao guardados juntos e ordenados pelo timestamp
+DROP TABLE IF EXISTS user_comments;
+CREATE TABLE user_comments (
+    username TEXT,
+    comment_timestamp TIMESTAMP,
+    video_id int,
+    comentario TEXT,
+    PRIMARY KEY (username, comment_timestamp)
+) WITH CLUSTERING ORDER BY (comment_timestamp DESC);
+
+// followers do mesmo video sao guardados juntos
+DROP TABLE IF EXISTS video_followers;
+CREATE TABLE video_followers (
+    video_id int,
+    follower_username TEXT,
+    follow_timestamp TIMESTAMP,
+    PRIMARY KEY (video_id, follower_username)
+);
+
+
+// Tabela alterada no 4 da alínea D, adicionado o event_type como key
+CREATE TABLE video_events (
+    username TEXT,
+    video_id INT,
+    event_timestamp TIMESTAMP,
+    event_type TEXT,
+    video_time_in_seconds INT,
+    PRIMARY KEY (username, event_type, video_id, event_timestamp)
+) WITH CLUSTERING ORDER BY (event_type ASC, video_id ASC, event_timestamp DESC);
+
+
+
+DROP TABLE IF EXISTS video_ratings;
+CREATE TABLE video_ratings (
+    video_id int,
+    rating INT,
+    PRIMARY KEY (video_id, rating)
+);
+
+//criada na alínea D
+CREATE TABLE videos_by_tag (
+    tag TEXT,
+    video_id INT,
+    primary key ( tag, video_id )
+);

@@ -1,0 +1,47 @@
+[
+  {
+    "[json]": "{\"video_id\": 114, \"username\": \"user13\", \"event_timestamp\": \"2024-01-27 12:00:00.000Z\", \"event_type\": \"pause\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 110, \"username\": \"user9\", \"event_timestamp\": \"2024-01-24 12:00:00.000Z\", \"event_type\": \"pause\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 105, \"username\": \"user6\", \"event_timestamp\": \"2024-01-19 12:00:00.000Z\", \"event_type\": \"pause\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 111, \"username\": \"user12\", \"event_timestamp\": \"2024-01-24 12:00:00.000Z\", \"event_type\": \"pause\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 113, \"username\": \"user14\", \"event_timestamp\": \"2024-01-26 12:00:00.000Z\", \"event_type\": \"pause\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 112, \"username\": \"user11\", \"event_timestamp\": \"2024-01-25 12:00:00.000Z\", \"event_type\": \"pause\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 107, \"username\": \"user8\", \"event_timestamp\": \"2024-01-21 12:00:00.000Z\", \"event_type\": \"pause\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 108, \"username\": \"user7\", \"event_timestamp\": \"2024-01-22 12:00:00.000Z\", \"event_type\": \"pause\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 109, \"username\": \"user10\", \"event_timestamp\": \"2024-01-23 12:00:00.000Z\", \"event_type\": \"pause\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 104, \"username\": \"user3\", \"event_timestamp\": \"2024-01-18 12:00:00.000Z\", \"event_type\": \"pause\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 102, \"username\": \"user1\", \"event_timestamp\": \"2024-01-16 12:00:00.000Z\", \"event_type\": \"pause\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 102, \"username\": \"user1\", \"event_timestamp\": \"2024-01-16 12:10:00.000Z\", \"event_type\": \"play\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 106, \"username\": \"user5\", \"event_timestamp\": \"2024-01-20 12:00:00.000Z\", \"event_type\": \"pause\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 101, \"username\": \"user2\", \"event_timestamp\": \"2024-01-15 12:00:00.000Z\", \"event_type\": \"pause\", \"video_time_in_seconds\": 350}"
+  },
+  {
+    "[json]": "{\"video_id\": 103, \"username\": \"user4\", \"event_timestamp\": \"2024-01-17 12:00:00.000Z\", \"event_type\": \"play\", \"video_time_in_seconds\": 350}"
+  }
+]

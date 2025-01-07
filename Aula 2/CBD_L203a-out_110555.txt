@@ -1,0 +1,60 @@
+// MAX PRODUTOS = 3
+// INTERVALO = 120
+
+
+Username: 
+Carlos
+
+Bem vindo Carlos
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+Produto:
+Pao
+
+Bem vindo Carlos
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+Produto:
+Queijo
+
+Bem vindo Carlos
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+Produto:
+Agua
+
+Bem vindo Carlos
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+1
+
+Limite de produtos atingido
+
+
+Bem vindo Carlos
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+2
+{"_id": {"$oid": "671a7dbf6ecf6b565ad87f2f"}, "nome": "Pao"}
+{"_id": {"$oid": "671a7dc26ecf6b565ad87f30"}, "nome": "Queijo"}
+{"_id": {"$oid": "671a7dc76ecf6b565ad87f31"}, "nome": "Agua"}
+
+Bem vindo Carlos
+1 - Adicionar produto
+2 - Ver produtos adicionados
+3 - Sair
+
+3

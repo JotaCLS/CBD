@@ -1,0 +1,366 @@
+USE partilha_de_videos;
+
+
+// INSERT USERS
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user1', 'alice@gmail.com', 'Alice Silva', '2023-10-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user2', 'Beatriz@gmail.com', 'Beatriz Santos', '2023-11-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user3', 'Carlos@gmail.com', 'Carlos Gomes', '2023-12-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user4', 'Daniel@gmail.com', 'Daniel Brandao', '2023-01-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user5', 'Eduarda@gmail.com', 'Eduarda Costa', '2023-02-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user6', 'Francisca@gmail.com', 'Francisca Silva', '2023-03-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user7', 'Guilherme@gmail.com', 'Guilherme Silva', '2023-04-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user8', 'Henrique@gmail.com', 'Henrique Silva', '2023-05-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user9', 'Ivo@gmail.com', 'Ivo Silva', '2023-06-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user10', 'Joao@gmail.com', 'Joao Silva', '2023-07-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user11', 'Leonor@gmail.com', 'Leonor Silva', '2023-08-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user12', 'Maria@gmail.com', 'Maria Silva', '2023-09-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user13', 'Nuno@gmail.com', 'Nuno Silva', '2023-10-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user14', 'Olivia@gmail.com', 'Olivia Silva', '2023-11-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user15', 'Pualo@gmail.com', 'Pualo Silva', '2023-12-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user16', 'quim@gmail.com', 'Quim Silva', '2024-01-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user17', 'ru@gmail.com', 'Rui Silva', '2024-02-10 10:00:00');
+insert into partilha_de_videos.users (username, email, nome, registration_timestamp)
+values ('user18', 'sandra@gmail.com', 'Sandra Silva', '2024-03-10 10:00:00');
+
+
+// INSERT VIDEOS
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user1', '2023-10-10 11:00:00', 101, 'Viagem por portugal e arredores', 'Vlog #1', {'viagem', 'Portugal', 'Aveiro'} );
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user1', '2023-11-10 11:00:00', 119, 'Viagem por portugal e arredores', 'Vlog #2', {'viagem', 'Portugal', 'Aveiro'} );
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user1', '2023-12-10 11:00:00', 120, 'Viagem por portugal e arredores', 'Vlog #3', {'viagem', 'Portugal', 'Aveiro'} );
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user1', '2017-08-10 11:00:00', 121, 'Viagem por portugal e arredores', 'Vlog #4', {'viagem', 'Portugal', 'Aveiro'} );
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user1', '2017-08-23 11:00:00', 122, 'Viagem por portugal e arredores', 'Vlog #5', {'viagem', 'Portugal', 'Aveiro'} );
+
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user2', '2023-11-15 12:00:00', 102, 'Receita de bolo de cenoura com cobertura de chocolate', 'Receita de Bolo', {'culinária', 'doce'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user3', '2023-12-20 18:00:00', 103, 'Tutorial de guitarra para iniciantes', 'Aula de Guitarra', {'música', 'guitarra', 'iniciante'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user4', '2024-01-10 10:15:00', 104, 'Visita ao museu de arte moderna', 'Tour no Museu', {'arte', 'cultura', 'museu'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user5', '2024-01-25 14:00:00', 105, 'Dicas para praticar meditação', 'Meditação e Mindfulness', {'meditação', 'saúde', 'bem-estar'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user6', '2024-02-01 16:30:00', 106, 'Exercícios para fortalecer o abdômen', 'Treino de Abdômen', {'exercício', 'fitness', 'treino'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user7', '2024-02-15 09:00:00', 107, 'História da arquitetura gótica', 'História da Arte', {'arte', 'arquitetura', 'história'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user8', '2024-03-05 19:45:00', 108, 'Como fazer um jardim em casa', 'Dicas de Jardinagem', {'jardinagem', 'plantas', 'casa'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user9', '2024-03-20 13:20:00', 109, 'Um livro clássico', 'Leitura e Literatura', {'livros', 'literatura', 'resenha'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user10', '2024-04-01 07:30:00', 110, 'Tour pela minha cidade natal', 'Minha Cidade', {'cidade', 'cultura', 'passeio'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user11', '2024-04-15 20:10:00', 111, 'Fatos sobre astronomia', 'Explorando o Universo', {'ciência', 'astronomia', 'espaço'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user12', '2024-05-03 11:00:00', 112, 'A importância de uma alimentação saudável', 'Alimentação Saudável', {'saúde', 'nutrição', 'bem-estar'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user13', '2024-05-10 17:45:00', 113, 'Como aprender a desenhar', 'Aula de Desenho', {'arte', 'desenho', 'técnica'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user14', '2024-06-01 09:00:00', 114, 'Dicas de programação para iniciantes', 'Programação Básica', {'programação', 'tecnologia', 'iniciante'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user15', '2024-06-25 15:30:00', 115, 'Os melhores jogos de 2024', 'Review de Jogos', {'jogos', 'review', 'tecnologia'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user16', '2024-07-05 13:20:00', 116, 'Como cuidar de plantas suculentas', 'Cuidado de Suculentas', {'jardinagem', 'plantas', 'suculentas'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user17', '2024-07-18 11:00:00', 117, 'Truques para fazer slime em casa', 'Diversão com Slime', {'brinquedos', 'infantil', 'DIY'});
+insert into partilha_de_videos.videos_by_user (author, upload_timestamp, video_id, descricao, nome_video, tags)
+values ('user18', '2024-08-10 08:30:00', 118, 'Ideias de decoração para a sala de estar', 'Decoração Criativa', {'decoração', 'casa', 'design'});
+
+// INSERT COMMENTS
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (101, '2024-01-15 12:00:00', 'user2', 'comentario1');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user2', '2024-01-15 12:00:00', 'comentario1', 101 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (101, '2024-01-15 15:00:00', 'user3', 'comentario1_');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user3', '2024-01-15 15:00:00', 'comentario1_', 101 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (101, '2024-01-17 12:00:00', 'user4', 'comentario1_-');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user4', '2024-01-17 12:00:00', 'comentario1_-', 101 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (101, '2024-01-13 12:00:00', 'user5', 'comentario1/');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user5', '2024-01-13 12:00:00', 'comentario1/', 101 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (102, '2024-01-16 14:30:00', 'user1', 'comentario2');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user1', '2024-01-16 14:30:00', 'comentario2', 102 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (103, '2024-01-17 14:30:00', 'user4', 'comentario3');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user4', '2024-01-17 14:30:00', 'comentario3', 103 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (104, '2024-01-18 14:30:00', 'user3', 'comentario4');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user3', '2024-01-18 14:30:00', 'comentario4', 104 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (105, '2024-01-19 14:30:00', 'user6', 'comentario5');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user6', '2024-01-19 14:30:00', 'comentario5', 105 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (106, '2024-01-20 14:30:00', 'user5', 'comentario6');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user5', '2024-01-20 14:30:00', 'comentario6', 106 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (107, '2024-01-21 14:30:00', 'user8', 'comentario7');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user8', '2024-01-21 14:30:00', 'comentario7', 107 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (108, '2024-01-22 14:30:00', 'user7', 'comentario8');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user7', '2024-01-22 14:30:00', 'comentario8', 108 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (109, '2024-01-23 14:30:00', 'user10', 'comentario9');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user10', '2024-01-23 14:30:00', 'comentario9', 109 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (110, '2024-01-24 14:30:00', 'user9', 'comentario10');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user9', '2024-01-24 14:30:00', 'comentario10', 110 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (111, '2024-01-25 14:30:00', 'user12', 'comentario11');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user12', '2024-01-25 14:30:00', 'comentario11', 111 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (112, '2024-01-26 14:30:00', 'user11', 'comentario12');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user11', '2024-01-26 14:30:00', 'comentario12', 112 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (113, '2024-01-27 14:30:00', 'user14', 'comentario13');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user14', '2024-01-27 14:30:00', 'comentario13', 113 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (114, '2024-01-28 14:30:00', 'user13', 'comentario14');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user13', '2024-01-28 14:30:00', 'comentario14', 114 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (115, '2024-01-29 14:30:00', 'user16', 'comentario15');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user16', '2024-01-29 14:30:00', 'comentario15', 115 );
+
+insert into partilha_de_videos.comments(video_id, comment_timestamp, author, comentario)
+values (116, '2024-01-30 14:30:00', 'user15', 'comentario16');
+insert into partilha_de_videos.user_comments (username, comment_timestamp, comentario, video_id)
+values ('user15', '2024-01-30 14:30:00', 'comentario16', 116 );
+
+// INSERT EVENTOS
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user2', 101, '2024-01-15 12:00:00', 'pause', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user1', 102, '2024-01-16 12:00:00', 'pause', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user1', 102, '2024-01-16 12:10:00', 'play', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user4', 103, '2024-01-17 12:00:00', 'play', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user3', 104, '2024-01-18 12:00:00', 'pause', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user6', 105, '2024-01-19 12:00:00', 'pause', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user5', 106, '2024-01-20 12:00:00', 'pause', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user8', 107, '2024-01-21 12:00:00', 'pause', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user7', 108, '2024-01-22 12:00:00', 'pause', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user10', 109, '2024-01-23 12:00:00', 'pause', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user9', 110, '2024-01-24 12:00:00', 'pause', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user12', 111, '2024-01-24 12:00:00', 'pause', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user11', 112, '2024-01-25 12:00:00', 'pause', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user14', 113, '2024-01-26 12:00:00', 'pause', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user13', 114, '2024-01-27 12:00:00', 'pause', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user13', 114, '2024-01-27 13:00:00', 'play', 350);
+
+insert into partilha_de_videos.video_events(username, video_id, event_timestamp, event_type, video_time_in_seconds)
+values ('user13', 114, '2024-01-27 13:30:00', 'pause', 7500);
+
+// INSERT video_followers
+
+insert into partilha_de_videos.video_followers(video_id, follower_username, follow_timestamp)
+values (101,'user2', '2024-01-15 12:00:00');
+
+insert into partilha_de_videos.video_followers(video_id, follower_username, follow_timestamp)
+values (102,'user1', '2024-01-16 12:00:00');
+
+insert into partilha_de_videos.video_followers(video_id, follower_username, follow_timestamp)
+values (103,'user4', '2024-01-17 12:00:00');
+
+insert into partilha_de_videos.video_followers(video_id, follower_username, follow_timestamp)
+values (104,'user3', '2024-01-18 12:00:00');
+
+insert into partilha_de_videos.video_followers(video_id, follower_username, follow_timestamp)
+values (105,'user6', '2024-01-19 12:00:00');
+
+insert into partilha_de_videos.video_followers(video_id, follower_username, follow_timestamp)
+values (106,'user5', '2024-01-20 12:00:00');
+
+insert into partilha_de_videos.video_followers(video_id, follower_username, follow_timestamp)
+values (107,'user8', '2024-01-21 12:00:00');
+
+insert into partilha_de_videos.video_followers(video_id, follower_username, follow_timestamp)
+values (108,'user7', '2024-01-22 12:00:00');
+
+insert into partilha_de_videos.video_followers(video_id, follower_username, follow_timestamp)
+values (109,'user10', '2024-01-23 12:00:00');
+
+insert into partilha_de_videos.video_followers(video_id, follower_username, follow_timestamp)
+values (110,'user9', '2024-01-24 12:00:00');
+
+insert into partilha_de_videos.video_followers(video_id, follower_username, follow_timestamp)
+values (111,'user12', '2024-01-25 12:00:00');
+
+insert into partilha_de_videos.video_followers(video_id, follower_username, follow_timestamp)
+values (112,'use11', '2024-01-26 12:00:00');
+
+insert into partilha_de_videos.video_followers(video_id, follower_username, follow_timestamp)
+values (113,'user14', '2024-01-27 12:00:00');
+
+// insert ratings
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (101, 4);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (102, 3);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (103, 5);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (104, 2);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (105, 3);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (106, 3);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (107, 4);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (108, 5);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (109, 3);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (101, 2);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (101, 4);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (101, 5);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (103, 4);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (103, 1);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (104,2);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (104,2);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (105,5);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (105,4);
+
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (105,5);
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (105,5);
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (105,4);
+insert into partilha_de_videos.video_ratings(video_id, rating)
+values (105,4);
+
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('Aveiro', 101);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('Aveiro', 119);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('Aveiro', 120);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('Aveiro', 121);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('Aveiro', 122);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('viagem', 101);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('viagem', 119);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('viagem', 120);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('viagem', 121);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('viagem', 122);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('vlog', 101);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('vlog', 119);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('vlog', 120);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('vlog', 121);
+insert into partilha_de_videos.videos_by_tag(tag, video_id) VALUES ('vlog', 122);
+
+
+
+
+
+

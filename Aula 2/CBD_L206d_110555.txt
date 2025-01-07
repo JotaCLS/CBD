@@ -1,0 +1,57 @@
+1- Contar o numero de livros com mais de 500 paginas
+
+db.Livros.aggregate({$match:{pageCount:{$gt:500}}}, {$count:"totalLivros"})
+
+{
+  totalLivros: 90
+}
+
+2- Apresentar o numero de livros para cada categoria
+
+db.Livros.aggregate({$unwind: "$categories"}, {$group: {_id: "$categories", totalLivros: {$sum:1}}}, {$project:{categoria: "$_id", totalLivros:1, _id:0}})
+
+{
+  totalLivros: 1,
+  categoria: 'Client Server'
+}
+{
+  totalLivros: 1,
+  categoria: 'S'
+}
+{
+  totalLivros: 2,
+  categoria: ''
+}
+{
+  totalLivros: 6,
+  categoria: 'Python'
+}
+...
+
+3- Contra o numero de livros com estado "PUBLISH"
+
+db.Livros.aggregate({$match:{status: "PUBLISH"}}, {$count: "totalLivros"})
+
+{
+  totalLivros: 363
+}
+
+4- Mostrar o autor com mais livros escritos
+
+db.Livros.aggregate({$unwind: "$authors"}, {$group: {_id: "$authors", totalLivros:{$sum:1}}}, {$sort:{totalLivros: -1}}, {$project:{	autor:"$_id", totalLivros:1, _id:0}})
+
+{
+  totalLivros: 59,
+  autor: ''
+}
+{
+  totalLivros: 12,
+  autor: 'Vikram Goyal'
+}
+{
+  totalLivros: 6,
+  autor: 'Don Jones'
+}
+...
+
+5-

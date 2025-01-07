@@ -1,0 +1,247 @@
+EX 3.4 G
+
+Queries
+
+1-Mostrar musicas de determinado author
+// ir a tabela do user e filtrar pelo user_id (user_id precisa de ser key)
+
+SELECT * FROM musics WHERE author = 'Artist1';
+
+[
+  {
+    "author": "Artist1",
+    "upload_date": "2024-11-02 11:00:00.000",
+    "album": "Pop 2024",
+    "duration": 180,
+    "genre": "POP",
+    "likes": 200,
+    "music_id": "b2eb5b67-aa96-4839-9b9f-4281beb27f7f",
+    "music_name": "Pop Queen"
+  }
+]
+
+2-Mostrar todas as playlist de determinado user
+// ir a tabela do user e filtrar pelo user_id (user_id precisa de ser key)
+
+SELECT * FROM spotify.playlists WHERE author_id=41e6216a-eae3-4ba7-8d28-bc440fd61359;
+
+[
+  {
+    "playlist_id": "dedad6c5-4f9c-4aef-8a96-07a1feaa4727",
+    "author_id": "41e6216a-eae3-4ba7-8d28-bc440fd61359",
+    "creation_date": "2024-11-09 14:00:00.000",
+    "likes": 4,
+    "musics": [
+      "f9b27387-d701-45bb-aaf8-12a788bd967b",
+      "521f08a9-debd-4fc8-a61b-7d8cc9630ef9"
+    ],
+    "playlist_name": "Workout"
+  },
+  {
+    "playlist_id": "6239fdec-aa2b-4e8c-945a-c1f827cbdf8c",
+    "author_id": "41e6216a-eae3-4ba7-8d28-bc440fd61359",
+    "creation_date": "2024-11-09 14:00:00.000",
+    "likes": 6,
+    "musics": [
+      "8653889e-1fd8-482b-9586-b1c5cca856d2",
+      "a52173e8-d1ac-4479-b35d-10f219e38594"
+    ],
+    "playlist_name": "Party"
+  },
+  {
+    "playlist_id": "45d37a09-340c-484b-9a87-c1c8da3d30fe",
+    "author_id": "41e6216a-eae3-4ba7-8d28-bc440fd61359",
+    "creation_date": "2024-11-08 09:00:00.000",
+    "likes": 6,
+    "musics": [
+      "8653889e-1fd8-482b-9586-b1c5cca856d2",
+      "521f08a9-debd-4fc8-a61b-7d8cc9630ef9"
+    ],
+    "playlist_name": "forever, with you"
+  },
+  {
+    "playlist_id": "ba7ea1a0-9bff-4c52-b6d3-6b1dadedeeab",
+    "author_id": "41e6216a-eae3-4ba7-8d28-bc440fd61359",
+    "creation_date": "2024-11-08 09:00:00.000",
+    "likes": 4,
+    "musics": [
+      "f26c2120-87f7-416f-b7cb-76a0fb863110",
+      "a8b2e186-18db-4bf4-a116-a368bb0e21aa"
+    ],
+    "playlist_name": "sounds of the sun"
+  },
+  {
+    "playlist_id": "b8eb0b45-9487-4caa-9def-50f3eb66bd13",
+    "author_id": "41e6216a-eae3-4ba7-8d28-bc440fd61359",
+    "creation_date": "2024-11-09 14:00:00.000",
+    "likes": 5,
+    "musics": [
+      "a8b2e186-18db-4bf4-a116-a368bb0e21aa",
+      "2504950c-376d-4242-a2dc-6a5a0e0536e0"
+    ],
+    "playlist_name": "Funk KK"
+  }
+]
+
+3-Encontrar as musicas mais recentes de determinado gênero
+// ir a tabela das musicas e filtrar por gênero (gênero precisa de ser key)
+
+SELECT * FROM musics WHERE genre = 'rock';
+
+[
+  {
+    "author": "Band1",
+    "upload_date": "2024-11-01 10:00:00.000",
+    "album": "Rock Hits",
+    "duration": 200,
+    "genre": "rock",
+    "likes": 150,
+    "music_id": "a1e88cc1-7a21-4097-9ddd-3ce216620e40",
+    "music_name": "Rock Anthem"
+  },
+  {
+    "author": "Band3",
+    "upload_date": "2024-11-09 18:00:00.000",
+    "album": "Rock Classics",
+    "duration": 250,
+    "genre": "rock",
+    "likes": 200,
+    "music_id": "9305c558-ba07-4886-a479-e28cabaf9bc8",
+    "music_name": "Rock n Roll Forever"
+  },
+  {
+    "author": "Band4",
+    "upload_date": "2024-11-15 08:00:00.000",
+    "album": "Fire Rock",
+    "duration": 230,
+    "genre": "rock",
+    "likes": 250,
+    "music_id": "45c0ed14-2950-4e50-b289-6dd25199da5b",
+    "music_name": "Rock on Fire"
+  }
+]
+
+
+4-Ultimas 5 musicas reproduzidas de determinado user
+// ir a tabela de reproduções e filtrar por user (user_id precisa de ser key)
+
+SELECT * FROM spotify.reproduces WHERE user_id=c54dccac-2902-47cf-9004-28ba4592380f;
+
+[
+  {
+    "user_id": "c54dccac-2902-47cf-9004-28ba4592380f",
+    "timestamp": "2024-11-07 15:05:00.000",
+    "device": "laptop",
+    "music_id": "2504950c-376d-4242-a2dc-6a5a0e0536e0"
+  },
+  {
+    "user_id": "c54dccac-2902-47cf-9004-28ba4592380f",
+    "timestamp": "2024-11-07 15:00:00.000",
+    "device": "smartphone",
+    "music_id": "f9b27387-d701-45bb-aaf8-12a788bd967b"
+  }
+]
+
+5-Mostrar as musicas de determinado album
+// ir a tabela de musics e filtrar por álbuns (album precisa de ser key)
+
+SELECT * FROM spotify.musics WHERE album='Pop 2024';
+
+[
+  {
+    "author": "Artist1",
+    "upload_date": "2024-11-02 11:00:00.000",
+    "album": "Pop 2024",
+    "duration": 180,
+    "genre": "POP",
+    "likes": 200,
+    "music_id": "b2eb5b67-aa96-4839-9b9f-4281beb27f7f",
+    "music_name": "Pop Queen"
+  },
+  {
+    "author": "Artist12",
+    "upload_date": "2024-11-16 09:00:00.000",
+    "album": "Pop 2024",
+    "duration": 180,
+    "genre": "POP",
+    "likes": 180,
+    "music_id": "c988fe6f-1ef6-4156-89d6-4b094634c7f8",
+    "music_name": "Pop Explosion"
+  }
+]
+
+6-Mostrar os gêneros de determinado user
+// ir a tabela de users e filtrar por user_id (user_id precisa de ser key)
+
+SELECT genero_favorito FROM spotify.users WHERE user_id =bf619cc4-2f5e-48df-85ac-387406674daf;
+
+[
+  {
+    "genero_favorito": ["POP", "hiphop tuga", "rap"]
+  }
+]
+
+7-Mostrar as musicas com 200 likes
+// ir a tabela de musics e filtrar por likes(likes precisa de ser key)
+
+SELECT * FROM musics_by_likes WHERE likes= 200;
+
+[
+  {
+    "likes": 200,
+    "author": "Artist14",
+    "music_id": "f9b27387-d701-45bb-aaf8-12a788bd967b",
+    "music_name": "Summer Funk"
+  }
+]
+
+8-Mostrar as playlist de determinado user com 3 musicas
+// ir a tabela playlists filtrar o user e o size
+
+SELECT * FROM spotify.playlists WHERE author_id=fac90e5b-b45d-466d-ba63-29585ae21d8f and size=3;
+
+
+[
+  {
+    "author_id": "fac90e5b-b45d-466d-ba63-29585ae21d8f",
+    "size": 3,
+    "creation_date": "2024-11-07 16:00:00.000",
+    "likes": 5,
+    "musics": [
+      "a1e88cc1-7a21-4097-9ddd-3ce216620e40",
+      "9305c558-ba07-4886-a479-e28cabaf9bc8",
+      "45c0ed14-2950-4e50-b289-6dd25199da5b"
+    ],
+    "playlist_id": "c2389c20-f1d6-4963-9ff3-6f90de0b8e7e",
+    "playlist_name": "alive rock"
+  }
+]
+
+9-Mostrar as musicas ouvidas por determinado user
+
+SELECT music_id FROM spotify.reproduces WHERE user_id =2bcd0ed9-802a-40ab-b960-124ab8c6d9d4;
+
+[
+  {
+    "music_id": "6cb2ac5d-fd72-4293-984c-be604ec49446"
+  },
+  {
+    "music_id": "f9b27387-d701-45bb-aaf8-12a788bd967b"
+  }
+]
+
+10-Mostrar o dispositivos usados para reproducoes de um determinado user
+
+SELECT device, count(*) FROM spotify.reproduces WHERE user_id=2bcd0ed9-802a-40ab-b960-124ab8c6d9d4 GROUP BY device;
+
+
+[
+  {
+    "device": "desktop",
+    "count": 1
+  },
+  {
+    "device": "laptop",
+    "count": 1
+  }
+]

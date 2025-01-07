@@ -1,0 +1,41 @@
+ping                                                                                                                    
+String                                                                                                                  
+SELECT                                                                                                                  
+SELECT *                                                                                                                
+SELECT 1                                                                                                                
+set 1 a                                                                                                                 
+get 1                                                                                                                   
+set 1 b                                                                                                                 
+get 1                                                                                                                   
+move 1 2                                                                                                                
+get 1                                                                                                                   
+SELECT 2                                                                                                                
+get 1                                                                                                                   
+dbsize                                                                                                                  
+flushdb                                                                                                                 
+dbsize                                                                                                                  
+select 1                                                                                                                
+monitor                                                                                                                 
+strlen 1                                                                                                                
+set 1 ola                                                                                                               
+strlen 1                                                                                                                
+flushdb                                                                                                                 
+strlen 1                                                                                                                
+OPNE                                                                                                                    
+open                                                                                                                    
+set 1 ola                                                                                                               
+exists 1                                                                                                                
+exists 2                                                                                                                
+keys a                                                                                                                  
+keys ola                                                                                                                
+keys 1                                                                                                                  
+keys 2                                                                                                                  
+del 1                                                                                                                   
+keys 1                                                                                                                 
+keys a                                                                                                                  
+set 1 ola                                                                                                               
+rename 1 3                                                                                                              
+keys a                                                                                                                  
+keys 1                                                                                                                  
+keys 3                                                                                                                  
+type 3 

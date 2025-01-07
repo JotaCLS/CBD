@@ -1,0 +1,9 @@
+[
+  {
+    "username": "user1",
+    "event_type": "pause",
+    "video_id": 102,
+    "event_timestamp": "2024-01-16 12:00:00.000",
+    "video_time_in_seconds": 350
+  }
+]

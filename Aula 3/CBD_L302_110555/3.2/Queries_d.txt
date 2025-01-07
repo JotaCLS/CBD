@@ -1,0 +1,94 @@
+1. Os últimos 3 comentários introduzidos para um vídeo; 
+
+USE partilha_de_videos;
+
+SELECT * FROM partilha_de_videos.comments WHERE video_id=101 ORDER BY comment_timestamp DESC LIMIT 3;
+
+Resposta: ExD1.json
+
+
+
+
+
+
+3. Todos os vídeos com a tag Aveiro; 
+
+// Como não tenho nenhuma tabela com chave primaria tag para fazer a pesquisa, vou optar por criar uma tabela videos_by_tag mq eu associo a tag do video ao id
+
+SELECT * FROM partilha_de_videos.videos_by_tag WHERE tag = 'Aveiro';
+
+Resposta: ExD3.json
+
+
+4a. Os últimos 5 eventos de determinado vídeo realizados por um utilizador; 
+
+SELECT * FROM partilha_de_videos.video_events WHERE video_id = 114 and username = 'user13' ORDER BY event_timestamp LIMIT 5;
+
+Resposta: ExD4a.json
+
+4b. Todos os eventos de determinado utilizador;
+
+SELECT * FROM partilha_de_videos.video_events WHERE username = 'user13';
+
+Resposta: ExD4b.json
+
+4c. Todos os eventos de determinado utilizador do tipo "pause"
+//adicionei o event_type como key 
+
+SELECT * FROM partilha_de_videos.video_events where username='user1' and event_type='pause';
+
+Resposta: ExD4c.json
+5. Vídeos partilhados por determinado utilizador (maria1987, por exemplo) num 
+determinado período de tempo (Agosto de 2017, por exemplo); 
+
+SELECT * FROM partilha_de_videos.videos_by_user WHERE author = 'user1' and upload_timestamp>= '2017-08-01 00:00:00+0000' AND upload_timestamp <= '2017-08-31 23:59:59+0000';
+
+Respota ExD5.json
+
+6. Os últimos 10 vídeos, ordenado inversamente pela data da partilhada; 
+
+// A query a aplicar seria esta, mas não da para usar o order by sem restringir a clustering key primeiro
+SELECT * FROM partilha_de_videos.videos_by_user ORDER BY upload_timestamp DESC;
+
+//Mesmo mudando a tabela para o clustering key ser o video_id ao invés do user teria se de especificar na mesma o video
+
+Resposta: é preciso restringir primeiro a clustering key para usar o order by, logo não conseguimos ter os últimos 10 videos ordenados inversamente 
+
+7. Todos os seguidores (followers) de determinado vídeo;
+
+SELECT * FROM partilha_de_videos.video_followers WHERE video_id = 101;
+
+Resposta: ExD7.json
+
+8. Todos os comentários (dos vídeos) que determinado utilizador está a seguir (following); 
+
+Neste caso precisaria de fazer um join e alterar a tabela dos video_followers para mudar a ordem das keys (iria colidir com a resolução do 7). Em Cassandra não consigo fazer joins 
+
+9. Os 5 vídeos com maior rating; 
+
+// trocar a ordem das keys para o rating ser primeiro e retornar videos com nota 5 e limitar a 5 pessoas ?
+// falha no caso de haver por exemplo 3 videos com rating 5 e 2 com 4, os com 4 não vao aparecer e não vamos ter o pedido
+
+Resposta: Acho que não dá para fazer sem usar um WHERE ou na nota ou no video, ou seja não conseguimos usar o orderBy sem usar o WHERE antes numa das keys.
+
+10. Uma query que retorne todos os vídeos e que mostre claramente a forma pela qual estão ordenados;
+
+SELECT nome_video FROM partilha_de_videos.videos_by_user;
+
+// ? mostre a forma pela qual estão ordenados ?
+
+11. Lista com as Tags existentes e o número de vídeos catalogados com cada uma delas; 
+// não adicionei todas as tags de todos os videos, adicionei as sufificnetes para garantir que estava a funcionar
+
+SELECT tag, count(*) as numVideos from partilha_de_videos.videos_by_tag group by tag;
+
+Resposta: ExD11
+
+
+
+
+
+
+
+
+

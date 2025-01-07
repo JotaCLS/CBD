@@ -1,0 +1,17 @@
+select 1
+set 1 teste1
+set 2 teste2
+set 3 ola
+set 4 apagado 
+set 5 teste3
+get 1
+get 2
+get 3
+del 4
+get 4
+get 5
+dbsize
+move 3 2
+select 2
+get 3
+

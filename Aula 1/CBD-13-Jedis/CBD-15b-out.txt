@@ -1,0 +1,32 @@
+Enter username ('Enter' to exit): user1
+
+Enter product: peixe
+
+Enter quantity:
+2
+Response List<Tuple>
+0
+Request added successfully.
+
+Enter username ('Enter' to exit): user1
+
+Enter product: peixe
+
+Enter quantity:
+3
+Response List<Tuple>
+0
+Request added successfully.
+
+Enter username ('Enter' to exit): user1
+
+Enter product: peixe 
+
+Enter quantity:
+5
+Response List<Tuple>
+0
+Error: You have exceeded the limit of 3 products in the last 60 minutes.
+
+
+nao está a funcionar como era suposto

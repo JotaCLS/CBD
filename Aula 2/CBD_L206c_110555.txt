@@ -1,0 +1,91 @@
+Data Set structure
+Books
+
+{
+  _id: 21,
+  title: '3D User Interfaces with Java 3D',
+  isbn: '1884777902',
+  pageCount: 520, 
+  publishedDate: 2000-08-01T07:00:00.000Z,
+  thumbnailUrl: 'https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/barrilleaux.jpg',
+  longDescription: `3D User Interfaces with Java 3D is a practical guide for providing next-generation applications with 3D user interfaces for manipulation of in-scene objects. Emphasis is on standalone and web-based business applications, such as for online sales and mass customization, but much of what this book offers has broad applicability to 3D user interfaces in other pursuits such as scientific visualization and gaming.  This book provides an extensive conceptual framework for 3D user interface techniques, and an in-depth introduction to user interface support in the Java 3D API, including such topics as picking, collision, and drag-and-drop. Many of the techniques are demonstrated in a Java 3D software framework included with the book, which also provides developers with many general-purpose building blocks for constructing their own user interfaces.    Applications and their use of 3D are approached realistically. The book is geared towards sophisticated user interfaces for the "everyday user" who doesn't have a lot of time to learn another application--much less a complicated one--and an everyday computer system without exotic devices like head mounted displays and data gloves. Perhaps the best description of this book is: "A roadmap from Java 3D to 'Swing 3D'."`,
+  status: 'PUBLISH',
+  authors: [
+    'Jon Barrilleaux'
+  ],
+  categories: [
+    'Java',
+    'Computer Graphics'
+  ]
+}
+
+1- Apresentar o nome, autores e numero de paginas dos livros com mais de 400 paginas
+
+db.Livros.find({pageCount: {$gt:400}},{title:1, authors:1, _id:0})
+
+{
+  title: 'Graphics File Formats',
+  pageCount: 484,
+  authors: [
+    'C. Wayne Brown',
+    'Barry J. Shepherd'
+  ]
+}...
+
+
+2- Apresentar o nome, autores e data de publicação dos livros que comecem com "The"
+
+db.Livros.find({title:{$regex: /^The/, $options:'i'}}, {_id:0, title:1, authors:1, publishedDate:1})
+
+{
+  title: "The Programmer's Guide to Apache Thrift ",
+  authors: [
+    'Randy Abernethy'
+  ]
+}
+
+3- Apresentar nome e publishedDate dos livros lançados depois de 2014
+
+db.Livros.find({publishedDate:{$gt: ISODate("2013-12-31T00:00:00Z")}}, {title:1, publishedDate:1, _id:0})
+
+{
+  title: 'EJB 3 in Action, Second Edition',
+  publishedDate: 2014-04-07T07:00:00.000Z
+}
+
+4- Apresentar os livros que apenas se encaixam numa categoria
+
+db.Livros.find({categories:{$size:1}}, {title:1, categories:1, _id:0})
+
+{
+  title: 'Android in Action, Second Edition',
+  categories: [
+    'Java'
+  ]
+}
+
+5 - Apresentar todos os livros com mais de 3 categorias
+
+db.Livros.find({$where: "this.categories.length >= 3" }, {title:1, categories:1, _id:0}) // o $size nao suporta o $gte: 3 como valor 
+
+{
+  title: 'Kermit 95+',
+  categories: [
+    'Internet',
+    'Networking',
+    'Miscella'
+  ]
+}
+
+6 - Apresentar os livros que ainda nao estão "Publish"
+
+db.Livros.find({status: {$ne: "PUBLISH"}}, {title:1, status:1, _id:0})
+
+{
+  title: 'Distributed Agile in Action',
+  status: 'MEAP'
+}
+
+
+// formato do find db.livros.find({campo de procura:{$condicao : valor}}, {valores a apresentar})
+

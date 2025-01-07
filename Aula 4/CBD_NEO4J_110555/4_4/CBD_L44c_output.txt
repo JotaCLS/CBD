@@ -1,0 +1,307 @@
+#1 Mostrar as 10 primeiras musicas
+
+match(m:Musica)
+return distinct m.name
+limit 10
+
+
+╒═══════════════════════════════════════════════╕
+│m.name                                         │
+╞═══════════════════════════════════════════════╡
+│"Acoustic"                                     │
+├───────────────────────────────────────────────┤
+│"Here Comes the Sun - Acoustic"                │
+├───────────────────────────────────────────────┤
+│"Acoustic #3"                                  │
+├───────────────────────────────────────────────┤
+│"My Love Mine All Mine - Acoustic Instrumental"│
+├───────────────────────────────────────────────┤
+│"Beautiful Things - Acoustic"                  │
+├───────────────────────────────────────────────┤
+│"Landslide"                                    │
+├───────────────────────────────────────────────┤
+│"Acoustic Energy Vibrations"                   │
+├───────────────────────────────────────────────┤
+│"Little Lies"                                  │
+├───────────────────────────────────────────────┤
+│"Too Good At Goodbyes - Acoustic"              │
+├───────────────────────────────────────────────┤
+│"The One (Acoustic Cover)"                     │
+└───────────────────────────────────────────────┘
+
+
+#2 Mostrar os 5 álbuns com mais musicas
+
+match(m:Musica)-[:PERTENCE_A]->(a:Album)
+return a.name,count(m) as QuantMusic
+order by QuantMusic DESC
+limit 5
+
+
+╒═════════════════════════════════════╤══════════╕
+│a.name                               │QuantMusic│
+╞═════════════════════════════════════╪══════════╡
+│"Organic Passion"                    │18        │
+├─────────────────────────────────────┼──────────┤
+│" Disney\""                          │17        │
+├─────────────────────────────────────┼──────────┤
+│"Detroit Afterparty"                 │16        │
+├─────────────────────────────────────┼──────────┤
+│" Wow That's What I Call Metalcore\""│16        │
+├─────────────────────────────────────┼──────────┤
+│"\"Johann Sebastian Bach"            │15        │
+└─────────────────────────────────────┴──────────┘
+
+
+#3 Mostrar os 5 artistas com mais musicas
+
+match(m:Musica)-[:INTERPRETADO_POR]->(a:Artista)
+return a.name,count(m) as QuantMusic
+order by QuantMusic DESC
+limit 5
+
+╒═════════════════════════╤══════════╕
+│a.name                   │QuantMusic│
+╞═════════════════════════╪══════════╡
+│"Metallica"              │22        │
+├─────────────────────────┼──────────┤
+│"ONE OK ROCK"            │20        │
+├─────────────────────────┼──────────┤
+│"\"Swedish House Mafia"  │19        │
+├─────────────────────────┼──────────┤
+│"Chicago House Selection"│18        │
+├─────────────────────────┼──────────┤
+│"Death"                  │17        │
+└─────────────────────────┴──────────
+
+
+
+#4 Mostrar os 10 primeiros gêneros
+
+match (g:Genero)
+return g
+limit 10
+
+
+
+╒══════════════════════════════════════════════════╕
+│g                                                 │
+╞══════════════════════════════════════════════════╡
+│(:Genero {name: "acoustic"})                      │
+├──────────────────────────────────────────────────┤
+│(:Genero {name: " Pt 1: Moonshine\""})            │
+├──────────────────────────────────────────────────┤
+│(:Genero {name: "afrobeat"})                      │
+├──────────────────────────────────────────────────┤
+│(:Genero {name: "alt-rock"})                      │
+├──────────────────────────────────────────────────┤
+│(:Genero {name: " Pt. II\""})                     │
+├──────────────────────────────────────────────────┤
+│(:Genero {name: " You Filthy Animal\""})          │
+├──────────────────────────────────────────────────┤
+│(:Genero {name: "alternative"})                   │
+├──────────────────────────────────────────────────┤
+│(:Genero {name: " better than the alternative\""})│
+├──────────────────────────────────────────────────┤
+│(:Genero {name: "ambient"})                       │
+├──────────────────────────────────────────────────┤
+│(:Genero {name: " Pt. 01\""})                     │
+└──────────────────────────────────────────────────┘
+
+
+
+
+#5 Mostrar artistas que participam em mais albuns 
+
+
+MATCH (a:Artista)<-[:INTERPRETADO_POR]-(m:Musica)-[:PERTENCE_A]->(al:Album)
+with a.name AS Artista, COUNT(DISTINCT al) AS QuantidadeDeAlbuns
+WHERE QuantidadeDeAlbuns > 1
+return Artista, QuantidadeDeAlbuns
+ORDER BY QuantidadeDeAlbuns DESC
+LIMIT 10
+
+
+╒═══════════════════════╤══════════════════╕
+│Artista                │QuantidadeDeAlbuns│
+╞═══════════════════════╪══════════════════╡
+│"\"Swedish House Mafia"│13                │
+├───────────────────────┼──────────────────┤
+│"Metallica"            │11                │
+├───────────────────────┼──────────────────┤
+│"Rockabye Baby!"       │9                 │
+├───────────────────────┼──────────────────┤
+│"LATIN MAFIA"          │9                 │
+├───────────────────────┼──────────────────┤
+│"Dance Gavin Dance"    │9                 │
+├───────────────────────┼──────────────────┤
+│"ONE OK ROCK"          │9                 │
+├───────────────────────┼──────────────────┤
+│"\"Moby"               │9                 │
+├───────────────────────┼──────────────────┤
+│"classical"            │8                 │
+├───────────────────────┼──────────────────┤
+│"Imagine Dragons"      │8                 │
+├───────────────────────┼──────────────────┤
+│"Hardrock"             │8                 │
+└───────────────────────┴──────────────────┘
+
+
+#6 Mostrar os 5 álbuns mais populares baseado na soma da popularidade das musicas
+
+
+match (al:Album)<-[:PERTENCE_A]-(m:Musica)
+return al.name AS Album, SUM(toFloat(m.popularity)) AS PopularidadeTotal
+order by PopularidadeTotal DESC
+limit 5
+
+╒═════════════════════════════════════════════════════╤═════════════════╕
+│Album                                                │PopularidadeTotal│
+╞═════════════════════════════════════════════════════╪═════════════════╡
+│" Curren$y\""                                        │2009.0           │
+├─────────────────────────────────────────────────────┼─────────────────┤
+│"A Great Chaos"                                      │414.0            │
+├─────────────────────────────────────────────────────┼─────────────────┤
+│"Metallica (Remastered)"                             │374.0            │
+├─────────────────────────────────────────────────────┼─────────────────┤
+│"POST HUMAN: NeX GEn"                                │339.0            │
+├─────────────────────────────────────────────────────┼─────────────────┤
+│"Face For The Radio/Voice For A Silent Film (Deluxe)"│316.0            │
+└─────────────────────────────────────────────────────┴─────────────────┘
+
+
+#7 Mostrar musicas que contenham a palavara "Love"
+
+MATCH (m:Musica)
+WHERE m.name CONTAINS 'Love'
+RETURN m.name AS Musica
+ORDER BY m.popularity DESC
+LIMIT 10
+
+
+╒═══════════════════════════════════════════════════════════════════╕
+│Musica                                                             │
+╞═══════════════════════════════════════════════════════════════════╡
+│"Latin Lover (ft. Rubén Blades)"                                   │
+├───────────────────────────────────────────────────────────────────┤
+│"Kids in Love"                                                     │
+├───────────────────────────────────────────────────────────────────┤
+│"The Day We Fell in Love"                                          │
+├───────────────────────────────────────────────────────────────────┤
+│"The Day We Fell in Love"                                          │
+├───────────────────────────────────────────────────────────────────┤
+│"My Love Mine All Mine - Acoustic Instrumental"                    │
+├───────────────────────────────────────────────────────────────────┤
+│"Love Is Gone - Acoustic"                                          │
+├───────────────────────────────────────────────────────────────────┤
+│"Industrial Love - VNV Nation Remix"                               │
+├───────────────────────────────────────────────────────────────────┤
+│"Love in This Club (feat. Young Jeezy)"                            │
+├───────────────────────────────────────────────────────────────────┤
+│"Groovejet (If This Ain't Love) [feat. Sophie Ellis-Bextor]"       │
+├───────────────────────────────────────────────────────────────────┤
+│"\"Love Is an Open Door - From \"\"Frozen\"\"/Soundtrack Version\""│
+└───────────────────────────────────────────────────────────────────┘
+
+
+#8 Mostrar musicas do gênero "rock"
+
+match(m:Musica)
+where m.genre='rock'
+return m.name
+LIMIT 10
+
+
+╒════════════════════════════╕
+│m.name                      │
+╞════════════════════════════╡
+│"rock your hips"            │
+├────────────────────────────┤
+│"Rock and A Hard Place"     │
+├────────────────────────────┤
+│"Rockstar"                  │
+├────────────────────────────┤
+│"rockstar (feat. 21 Savage)"│
+├────────────────────────────┤
+│"Rock Your Body"            │
+├────────────────────────────┤
+│"Rockstar"                  │
+├────────────────────────────┤
+│"ROCKSTAR"                  │
+├────────────────────────────┤
+│"Rocky Theme"               │
+├────────────────────────────┤
+│"Rock'n Me"                 │
+├────────────────────────────┤
+│"Rock Lobster"              │
+└────────────────────────────┘
+
+#9 Mostrar os 10 artistas mais populares baseado na soma de popularidade das suas musicas
+
+MATCH (a:Artista)<-[:INTERPRETADO_POR]-(m:Musica)
+RETURN a.name AS Artista, SUM(toFloat(m.popularity)) AS PopularidadeTotal
+ORDER BY PopularidadeTotal DESC
+LIMIT 10
+
+
+╒══════════════════════╤═════════════════╕
+│Artista               │PopularidadeTotal│
+╞══════════════════════╪═════════════════╡
+│"\"Wiz Khalifa"       │2009.0           │
+├──────────────────────┼─────────────────┤
+│"Metallica"           │1094.0           │
+├──────────────────────┼─────────────────┤
+│"Imagine Dragons"     │880.0            │
+├──────────────────────┼─────────────────┤
+│"ONE OK ROCK"         │813.0            │
+├──────────────────────┼─────────────────┤
+│"HARDY"               │641.0            │
+├──────────────────────┼─────────────────┤
+│"Death"               │615.0            │
+├──────────────────────┼─────────────────┤
+│"Hardrock"            │592.0            │
+├──────────────────────┼─────────────────┤
+│"LATIN MAFIA"         │568.0            │
+├──────────────────────┼─────────────────┤
+│"Ken Carson"          │542.0            │
+├──────────────────────┼─────────────────┤
+│"Bring Me The Horizon"│531.0            │
+└──────────────────────┴─────────────────┘
+
+
+#10 Encontrar musicas com o mesmo nome mas de artistas diferentes
+
+MATCH (m1:Musica)-[:INTERPRETADO_POR]->(a1:Artista),
+      (m2:Musica)-[:INTERPRETADO_POR]->(a2:Artista)
+WHERE m1.name = m2.name AND a1 <> a2
+RETURN m1.name AS Musica, a1.name AS Artista1, a2.name AS Artista2
+LIMIT 10
+
+
+╒══════════╤════════════════════╤═════════════════════════╕
+│Musica    │Artista1            │Artista2                 │
+╞══════════╪════════════════════╪═════════════════════════╡
+│"Acoustic"│"Billy Raffoul"     │"Ling tosite sigure"     │
+├──────────┼────────────────────┼─────────────────────────┤
+│"Acoustic"│"Ling tosite sigure"│"Billy Raffoul"          │
+├──────────┼────────────────────┼─────────────────────────┤
+│"Acoustic"│"Billy Raffoul"     │"Sonido de Agua en Bambu"│
+├──────────┼────────────────────┼─────────────────────────┤
+│"Acoustic"│"Billy Raffoul"     │"The Re-Stoned"          │
+├──────────┼────────────────────┼─────────────────────────┤
+│"Acoustic"│"Billy Raffoul"     │"\"Lesfm"                │
+├──────────┼────────────────────┼─────────────────────────┤
+│"Acoustic"│"Ling tosite sigure"│"Sonido de Agua en Bambu"│
+├──────────┼────────────────────┼─────────────────────────┤
+│"Acoustic"│"Ling tosite sigure"│"The Re-Stoned"          │
+├──────────┼────────────────────┼─────────────────────────┤
+│"Acoustic"│"Ling tosite sigure"│"\"Lesfm"                │
+├──────────┼────────────────────┼─────────────────────────┤
+│"Acoustic"│"Billy Raffoul"     │"Mortal Treason"         │
+├──────────┼────────────────────┼─────────────────────────┤
+│"Acoustic"│"Billy Raffoul"     │"Puppe Music"            │
+└──────────┴────────────────────┴─────────────────────────┘
+
+
+
+

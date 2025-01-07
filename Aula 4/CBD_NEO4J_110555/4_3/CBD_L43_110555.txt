@@ -1,0 +1,66 @@
+Neo4j Desktop -> Open folder -> Import 
+
+LOAD CSV WITH HEADERS FROM 'file:///git_selection.csv' AS row 
+
+MERGE (p:Pessoa {real_name: row.real_name, svn_id: row.svn_id, organization: row.organization})  // Cria um nó Pessoa com os seus atributos
+MERGE (proj:Projeto {project_name: row.project_name}) // Cria um nó Projeto com o seu atributo
+MERGE (p)-[:PARTICIPOU_EM {role_on_project: row.role_on_project}]->(proj); // Cria a relacao PARTICIPOU_EM entre Pessoa e Projeto
+
+
+#1 Liste a informação de cada utilizador
+
+match (p:Pessoa)
+return p.real_name, p.svn_id, p.organization;
+
+
+#2 Liste o nome de cada utilizador
+
+match (p:Pessoa)
+return p.real_name;
+
+
+#3 Liste a informação de cada projeto, no qual tenha participado pelo menos um utilizador
+
+match (p:Pessoa)-[r:PARTICIPOU_EM]->(proj:Projeto)
+return proj.project_name;
+
+
+#4 Liste os utilizadores e total de projetos em que cada um colabora
+
+match (p:Pessoa)-[r:PARTICIPOU_EM]->(proj:Projeto)
+return p.real_name, count(proj) as total_projetos;
+
+
+#5 Liste os utilizadores e do total de projetos em que cada colabora ordenados por ordem decrescente do total.
+
+match (p:Pessoa)-[r:PARTICIPOU_EM]->(proj:Projeto)
+return p.real_name, count(proj) as total_projetos
+order by total_projetos desc;
+
+#6 Liste projetos e total de membros em cada projeto
+
+match (p:Pessoa)-[r:PARTICIPOU_EM]->(proj:Projeto)
+return proj.project_name, count(p) as total_membros;
+
+
+#7 Liste projetos e total de membros com a role "Committer" em cada projeto
+
+match (p:Pessoa)-[r:PARTICIPOU_EM]->(proj:Projeto)
+where r.role_on_project = "Committer"
+return proj.project_name, count(p) as total_membros;
+
+
+#8 Liste todos os utilizadores que participaram nos mesmo projetos do que o utilizador "atm" (id).  Mostre os atributos: nome de "atm", nome utilizador 2, nome do projeto
+
+match (p:Pessoa)-[r:PARTICIPOU_EM]->(proj:Projeto)<-[r2:PARTICIPOU_EM]-(p2:Pessoa)
+where p.svn_id = "atm" and p2.svn_id <> "atm"
+return DISTINCT p.real_name, p2.real_name, proj.project_name; // DISTINCT aqui para nao repetir os resultados
+
+
+#9 Liste todos os utilizadores que participaram com a role "Committer" em projetos em que o utilizador "atm" (id1) participou com a role "PMC"
+
+match (p:Pessoa)-[r:PARTICIPOU_EM]->(proj:Projeto)<-[r2:PARTICIPOU_EM]-(p2:Pessoa)
+where p.svn_id = "atm" and r.role_on_project = "PMC" and r2.role_on_project = "Committer"
+return distinct p2.real_name, proj.project_name
+
+

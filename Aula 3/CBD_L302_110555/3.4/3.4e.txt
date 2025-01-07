@@ -1,0 +1,14 @@
+CREATE FUNCTION concat_music_author(music_name TEXT, author_name TEXT)
+    CALLED ON NULL INPUT
+    RETURNS TEXT
+    LANGUAGE java AS '
+        if (music_name == null) {
+            music_name = "";
+        }
+        if (author_name == null) {
+            author_name = "";
+        }
+        return music_name + " by " + author_name;
+    ';
+
+

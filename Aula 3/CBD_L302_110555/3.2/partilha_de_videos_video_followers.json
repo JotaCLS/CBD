@@ -1,0 +1,41 @@
+[
+  {
+    "[json]": "{\"video_id\": 110, \"follower_username\": \"user9\", \"follow_timestamp\": \"2024-01-24 12:00:00.000Z\"}"
+  },
+  {
+    "[json]": "{\"video_id\": 105, \"follower_username\": \"user6\", \"follow_timestamp\": \"2024-01-19 12:00:00.000Z\"}"
+  },
+  {
+    "[json]": "{\"video_id\": 111, \"follower_username\": \"user12\", \"follow_timestamp\": \"2024-01-25 12:00:00.000Z\"}"
+  },
+  {
+    "[json]": "{\"video_id\": 113, \"follower_username\": \"user14\", \"follow_timestamp\": \"2024-01-27 12:00:00.000Z\"}"
+  },
+  {
+    "[json]": "{\"video_id\": 112, \"follower_username\": \"use11\", \"follow_timestamp\": \"2024-01-26 12:00:00.000Z\"}"
+  },
+  {
+    "[json]": "{\"video_id\": 107, \"follower_username\": \"user8\", \"follow_timestamp\": \"2024-01-21 12:00:00.000Z\"}"
+  },
+  {
+    "[json]": "{\"video_id\": 108, \"follower_username\": \"user7\", \"follow_timestamp\": \"2024-01-22 12:00:00.000Z\"}"
+  },
+  {
+    "[json]": "{\"video_id\": 109, \"follower_username\": \"user10\", \"follow_timestamp\": \"2024-01-23 12:00:00.000Z\"}"
+  },
+  {
+    "[json]": "{\"video_id\": 104, \"follower_username\": \"user3\", \"follow_timestamp\": \"2024-01-18 12:00:00.000Z\"}"
+  },
+  {
+    "[json]": "{\"video_id\": 102, \"follower_username\": \"user1\", \"follow_timestamp\": \"2024-01-16 12:00:00.000Z\"}"
+  },
+  {
+    "[json]": "{\"video_id\": 106, \"follower_username\": \"user5\", \"follow_timestamp\": \"2024-01-20 12:00:00.000Z\"}"
+  },
+  {
+    "[json]": "{\"video_id\": 101, \"follower_username\": \"user2\", \"follow_timestamp\": \"2024-01-15 12:00:00.000Z\"}"
+  },
+  {
+    "[json]": "{\"video_id\": 103, \"follower_username\": \"user4\", \"follow_timestamp\": \"2024-01-17 12:00:00.000Z\"}"
+  }
+]
